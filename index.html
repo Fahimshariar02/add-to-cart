@@ -41,7 +41,7 @@
             <h4>Shopping Cart</h4>
             <button id="cart-toggle-btn" class="btn" onclick="toggleCart()">&#x2716</button>
         </div>
-        <div id="cart-items" class="overflow-auto"></div>
+        <div id="cart-items" class="overflow-auto" style="max-height: 310px; max-width: 350px;"></div>
         <div class="cart-footer position-fixed bottom-0 d-flex flex-column bg-white shadow p-2">
             <h5 class="d-flex justify-content-between">
                 <span>Subtotal:</span>
@@ -49,11 +49,11 @@
             </h5>
             <div class="d-flex align-items-center mb-2">
                 <input type="text" id="promo-code" class="form-control me-2" placeholder="Enter promo code">
-                <button class="btn btn-success" onclick="applyPromoCode()">Apply</button>
+                <button class="btn btn-success" onclick="applyPromoCode(amount)">Apply</button>
             </div>
             <h5 class="d-flex justify-content-between">
-            <p>Discount: <span id="cart-discount">$0.00</span></p>
-
+                <span>Discount: </span>
+                <span id="cart-discount">$0.00</span>
             </h5>
             <h5 class="d-flex justify-content-between">
                 <span>Total:</span>
@@ -61,7 +61,7 @@
             </h5>
             <div class="d-flex justify-content-between">
                 <button class="btn btn-danger btn-sm" onclick="clearCart()">Clear Cart</button>
-                <button class="btn btn-primary btn-sm" onclick="checkOut()">Checkout</button>
+                <button class="btn btn-primary btn-sm" onclick="checkOut(amount,totalItems)">Checkout</button>
             </div>
         </div>
     </div>

@@ -215,31 +215,36 @@ function updateCartUI() {
         cartItems.innerHTML += cartItem;
     });
 
-
-    let discount = 0;
-    const promoCode = document.getElementById("promo-code").value;
-
     
-     if (promoCode == "ostad10") {
-        discount = 0.1 * total; 
-     
-    }
-    else if(promoCode =="ostad5"){
-        discount = 0.05 * total;
-    }
-
-    subtotal = total - discount;
-
-    // total = subtotal - discount;
-
-    // // Display subtotal, discount, and total
     document.getElementById("cart-subtotal").innerText = `$${total.toFixed(2)}`;
-    document.getElementById("cart-discount").innerText = `$${discount.toFixed(2)}`;
-    document.getElementById("cart-total").innerText = `$${subtotal.toFixed(2)}`;
+    //document.getElementById("cart-total").innerText = `$${total.toFixed(2)}`;
     amount = total.toFixed(2);
 }
 
+function applyPromoCode(amount){
+    let discount = 0;
+    let promoCode = document.getElementById("promo-code").value;
 
+    
+     if (promoCode == "ostad10") {
+        discount = 0.1 * amount; 
+     
+    }
+    else if(promoCode =="ostad5"){
+        discount = 0.05 * amount;
+    }
+
+    else{
+        alert("Invalid Promocode");
+    }
+
+    subtotal = amount - discount;
+
+    document.getElementById("cart-total").innerText = `$${subtotal.toFixed(2)}`;
+    document.getElementById("cart-discount").innerText = ` - $${discount.toFixed(2)}`;
+    document.getElementById("promo-code").value = "";
+    updateCartUI();
+}
 
 function updateQuantity(id, change) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
